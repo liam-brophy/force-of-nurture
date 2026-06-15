@@ -99,7 +99,7 @@ export default function Sidebar({ ephemeris }) {
           {/* Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
             <div>
-              <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 32, color: '#c9a96e', lineHeight: 1 }}>
+              <div style={{ fontFamily: '"Noto Sans Symbols 2", serif', fontSize: 32, color: '#c9a96e', lineHeight: 1 }}>
                 {meta?.glyph}
               </div>
               <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 22, color: '#f2e9d8', marginTop: 4 }}>

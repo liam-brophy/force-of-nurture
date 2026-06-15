@@ -1,6 +1,12 @@
 import { Graphics, Text, Container } from 'pixi.js';
 import bodiesData from '../../data/bodies.json';
 
+// U+FE0E is the Unicode text-variation selector (VS15). Appending it to an
+// astrological codepoint requests the text (non-emoji) glyph from the OS.
+// Combined with the explicit Noto Sans Symbols 2 font in the Text style,
+// this prevents emoji font substitution in both canvas and DOM contexts.
+const VS15 = '︎';
+
 const DEG = Math.PI / 180;
 
 function lonToXY(lon, radius, cx, cy) {
@@ -55,9 +61,9 @@ function createBodyNode(layer, bodyName, meta, color, onHover, onClick) {
   circle.fill({ color });
 
   const glyph = new Text({
-    text: meta.glyph,
+    text: meta.glyph + VS15,
     style: {
-      fontFamily: 'Cormorant Garamond, serif',
+      fontFamily: '"Noto Sans Symbols 2", serif',
       fontSize: meta.size + 4,
       fill: 0xf2e9d8,
       align: 'center',

@@ -246,8 +246,11 @@ export default function OrreryCanvas({ ephemeris }) {
             backdropFilter: 'blur(4px)',
           }}
         >
+          <span style={{ fontFamily: '"Noto Sans Symbols 2", serif', fontSize: 16 }}>
+            {bodiesData[tooltip.bodyName]?.glyph}
+          </span>{' '}
           <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 16 }}>
-            {bodiesData[tooltip.bodyName]?.glyph} {tooltip.bodyName}
+            {tooltip.bodyName}
           </span>
           <br />
           {tooltip.pos.lon.toFixed(1)}&deg;{tooltip.pos.retrograde ? ' Rx' : ''}

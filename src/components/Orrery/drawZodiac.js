@@ -1,5 +1,7 @@
 import { Graphics, Text, Container } from 'pixi.js';
 
+const VS15 = '︎';
+
 const SIGNS = [
   { name: 'Aries',       glyph: '♈', start: 0 },
   { name: 'Taurus',      glyph: '♉', start: 30 },
@@ -61,9 +63,9 @@ export function drawZodiac(layer, centerX, centerY, occupiedSigns) {
     const ly = centerY + LABEL_R * Math.sin(midAngle);
 
     const label = new Text({
-      text: sign.glyph,
+      text: sign.glyph + VS15,
       style: {
-        fontFamily: 'Cormorant Garamond, serif',
+        fontFamily: '"Noto Sans Symbols 2", serif',
         fontSize: occupied ? 16 : 14,
         fill: occupied ? GOLD_PULSE : GOLD,
         align: 'center',

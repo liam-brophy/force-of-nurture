@@ -47,7 +47,17 @@ export function usePixiApp(canvasRef) {
       layersRef.current._root = root;
       layersRef.current._ready = true;
 
-      canvas.dispatchEvent(new CustomEvent('pixi-ready'));
+      // Wait for Noto Sans Symbols 2 to be available before signalling ready.
+      // This guarantees PixiJS never renders a glyph Text object before the
+      // symbol font is loaded — if it were missing, the browser would fall back
+      // to the OS emoji font for these Unicode codepoints.
+      const ALL_GLYPHS = '☉☽☿♀♂♃♄♅♆♇⚷☊♈♉♊♋♌♍♎♏♐♑♒♓';
+      document.fonts
+        .load('16px "Noto Sans Symbols 2"', ALL_GLYPHS)
+        .catch(() => {/* non-fatal: render anyway if font fails to load */})
+        .finally(() => {
+          canvas.dispatchEvent(new CustomEvent('pixi-ready'));
+        });
     });
 
     let resizeTimer = null;
