@@ -1,0 +1,110 @@
+{
+  "Sun": {
+    "label": "Sun",
+    "glyph": "☉",
+    "color": "#F5C842",
+    "orbit_radius": 80,
+    "size": 14,
+    "include_in_default": true,
+    "minor": false
+  },
+  "Moon": {
+    "label": "Moon",
+    "glyph": "☽",
+    "color": "#E8E0C8",
+    "orbit_radius": 55,
+    "size": 10,
+    "include_in_default": true,
+    "minor": false
+  },
+  "Mercury": {
+    "label": "Mercury",
+    "glyph": "☿",
+    "color": "#B0C4DE",
+    "orbit_radius": 110,
+    "size": 9,
+    "include_in_default": true,
+    "minor": false
+  },
+  "Venus": {
+    "label": "Venus",
+    "glyph": "♀",
+    "color": "#E8B4A0",
+    "orbit_radius": 145,
+    "size": 10,
+    "include_in_default": true,
+    "minor": false
+  },
+  "Mars": {
+    "label": "Mars",
+    "glyph": "♂",
+    "color": "#C1440E",
+    "orbit_radius": 185,
+    "size": 10,
+    "include_in_default": true,
+    "minor": false
+  },
+  "Jupiter": {
+    "label": "Jupiter",
+    "glyph": "♃",
+    "color": "#C9A96E",
+    "orbit_radius": 235,
+    "size": 13,
+    "include_in_default": true,
+    "minor": false
+  },
+  "Saturn": {
+    "label": "Saturn",
+    "glyph": "♄",
+    "color": "#D4C5A9",
+    "orbit_radius": 285,
+    "size": 12,
+    "include_in_default": true,
+    "minor": false
+  },
+  "Uranus": {
+    "label": "Uranus",
+    "glyph": "♅",
+    "color": "#7FC8D4",
+    "orbit_radius": 330,
+    "size": 11,
+    "include_in_default": false,
+    "minor": true
+  },
+  "Neptune": {
+    "label": "Neptune",
+    "glyph": "♆",
+    "color": "#5C7CCA",
+    "orbit_radius": 370,
+    "size": 11,
+    "include_in_default": false,
+    "minor": true
+  },
+  "Pluto": {
+    "label": "Pluto",
+    "glyph": "♇",
+    "color": "#9C7BB5",
+    "orbit_radius": 405,
+    "size": 9,
+    "include_in_default": false,
+    "minor": true
+  },
+  "Chiron": {
+    "label": "Chiron",
+    "glyph": "⚷",
+    "color": "#A8C4A8",
+    "orbit_radius": 440,
+    "size": 8,
+    "include_in_default": false,
+    "minor": true
+  },
+  "NorthNode": {
+    "label": "North Node",
+    "glyph": "☊",
+    "color": "#C9A96E",
+    "orbit_radius": 465,
+    "size": 8,
+    "include_in_default": false,
+    "minor": true
+  }
+}
