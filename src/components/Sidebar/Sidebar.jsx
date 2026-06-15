@@ -108,7 +108,7 @@ export default function Sidebar({ ephemeris }) {
               {pos && (
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, color: '#c9a96e', marginTop: 6, letterSpacing: '0.06em' }}>
                   {getDegreeInSign(pos.lon)}° {getSignForLon(pos.lon)}
-                  {pos.retrograde ? ' ℞' : ''}
+                  {pos.retrograde ? ' Rx' : ''}
                 </div>
               )}
             </div>
@@ -125,7 +125,7 @@ export default function Sidebar({ ephemeris }) {
                 cursor: 'pointer',
               }}
             >
-              ✕ close
+              close
             </button>
           </div>
 

@@ -1,6 +1,10 @@
 import { Graphics } from 'pixi.js';
 import bodiesData from '../../data/bodies.json';
 
+function hexToNumber(hex) {
+  return parseInt(hex.replace('#', ''), 16);
+}
+
 export function drawOrbits(layer, centerX, centerY, visibleBodies) {
   layer.removeChildren();
 
@@ -9,7 +13,7 @@ export function drawOrbits(layer, centerX, centerY, visibleBodies) {
 
     const g = new Graphics();
     g.circle(centerX, centerY, meta.orbit_radius);
-    g.stroke({ color: 0xf2e9d8, alpha: 0.08, width: 1 });
+    g.stroke({ color: hexToNumber(meta.color), alpha: 0.18, width: 0.8 });
     layer.addChild(g);
   }
 }

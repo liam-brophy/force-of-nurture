@@ -8,24 +8,30 @@ export function usePixiApp(canvasRef) {
   useEffect(() => {
     if (!canvasRef.current) return;
 
+    const canvas = canvasRef.current;
     const app = new Application();
 
     app.init({
-      canvas: canvasRef.current,
+      canvas,
       width: window.innerWidth,
       height: window.innerHeight,
-      backgroundColor: 0x0d0d1a,
+      backgroundColor: 0x000000,
       antialias: true,
       resolution: window.devicePixelRatio || 1,
       autoDensity: true,
     }).then(() => {
       appRef.current = app;
 
+      // Background sits directly on stage — not inside the zoom/pan root —
+      // so stars stay fixed to the viewport like the sky should.
+      const bgContainer = new Container();
+      app.stage.addChild(bgContainer);
+
       const root = new Container();
       app.stage.addChild(root);
 
       const layers = {
-        background: new Container(),
+        background: bgContainer,
         zodiac: new Container(),
         orbits: new Container(),
         bodies: new Container(),
@@ -33,27 +39,34 @@ export function usePixiApp(canvasRef) {
         ui: new Container(),
       };
 
-      for (const layer of Object.values(layers)) {
-        root.addChild(layer);
+      for (const key of ['zodiac', 'orbits', 'bodies', 'aspects', 'ui']) {
+        root.addChild(layers[key]);
       }
 
       layersRef.current = layers;
       layersRef.current._root = root;
-      layersRef.current._app = app;
       layersRef.current._ready = true;
 
-      // Dispatch event so components know pixi is ready
-      canvasRef.current?.dispatchEvent(new CustomEvent('pixi-ready'));
+      canvas.dispatchEvent(new CustomEvent('pixi-ready'));
     });
 
+    let resizeTimer = null;
     const handleResize = () => {
-      if (!appRef.current) return;
-      appRef.current.renderer.resize(window.innerWidth, window.innerHeight);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!appRef.current) return;
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        appRef.current.renderer.resize(w, h);
+        canvas.dispatchEvent(new CustomEvent('pixi-resize', { detail: { w, h } }));
+      }, 120);
     };
+
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimer);
       appRef.current?.destroy(false, { children: true });
       appRef.current = null;
     };
